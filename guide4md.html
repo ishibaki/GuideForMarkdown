@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+  <link href="data:text/css;charset=utf-8,body%20%7B%0Afont%2Dfamily%3A%20%27Avenir%27%2C%20%27Helvetica%20Neue%27%2C%20%27Helvetica%27%2C%20%27Arial%27%2C%20%27Hiragino%20Sans%27%2C%20%27%E3%83%92%E3%83%A9%E3%82%AE%E3%83%8E%E8%A7%92%E3%82%B4%E3%82%B7%E3%83%83%E3%82%AF%27%2C%20%27YuGothic%27%2C%20%27Yu%20Gothic%27%2C%20%27%E6%B8%B8%E3%82%B4%E3%82%B7%E3%83%83%E3%82%AF%27%2C%20%27%E3%83%A1%E3%82%A4%E3%83%AA%E3%82%AA%27%2C%20%27Meiryo%27%2C%20%27%EF%BC%AD%EF%BC%B3%20%EF%BC%B0%E3%82%B4%E3%82%B7%E3%83%83%E3%82%AF%27%2C%20%27MS%20PGothic%27%20%3B%0Afont%2Dsize%3A%2014px%3B%0Acolor%3A%20%23333344%3B%0Aline%2Dheight%3A%201%2E6%3B%0Apadding%2Dtop%3A%2010px%3B%0Apadding%2Dbottom%3A%2010px%3B%0Abackground%2Dcolor%3A%20%23fefefe%3B%0Apadding%3A%2030px%3B%20%7D%0Abody%20%3E%20%2A%3Afirst%2Dchild%20%7B%0Amargin%2Dtop%3A%200%20%21important%3B%20%7D%0Abody%20%3E%20%2A%3Alast%2Dchild%20%7B%0Amargin%2Dbottom%3A%200%20%21important%3B%20%7D%0Aa%20%7B%0Acolor%3A%20%234183C4%3B%20%7D%0Aa%2Eabsent%20%7B%0Acolor%3A%20%23cc0000%3B%20%7D%0Aa%2Eanchor%20%7B%0Adisplay%3A%20block%3B%0Apadding%2Dleft%3A%2030px%3B%0Amargin%2Dleft%3A%20%2D30px%3B%0Acursor%3A%20pointer%3B%0Aposition%3A%20absolute%3B%0Atop%3A%200%3B%0Aleft%3A%200%3B%0Abottom%3A%200%3B%20%7D%0Ah1%2C%20h2%2C%20h3%2C%20h4%2C%20h5%2C%20h6%20%7B%0Amargin%3A%2020px%200%2010px%3B%0Apadding%3A%200%3B%0Afont%2Dweight%3A%20bold%3B%0A%2Dwebkit%2Dfont%2Dsmoothing%3A%20antialiased%3B%0Acursor%3A%20text%3B%0Aposition%3A%20relative%3B%20%7D%0Ah1%3Ahover%20a%2Eanchor%2C%20h2%3Ahover%20a%2Eanchor%2C%20h3%3Ahover%20a%2Eanchor%2C%20h4%3Ahover%20a%2Eanchor%2C%20h5%3Ahover%20a%2Eanchor%2C%20h6%3Ahover%20a%2Eanchor%20%7B%0Abackground%3A%20url%28data%3Aimage%2Fpng%3Bbase64%2CiVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8%2F9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA09pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw%2FeHBhY2tldCBiZWdpbj0i77u%2FIiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8%2BIDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoMTMuMCAyMDEyMDMwNS5tLjQxNSAyMDEyLzAzLzA1OjIxOjAwOjAwKSAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUM2NjlDQjI4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUM2NjlDQjM4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5QzY2OUNCMDg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5QzY2OUNCMTg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI%2FPsQhXeAAAABfSURBVHjaYvz%2F%2Fz8DJYCRUgMYQAbAMBQIAvEqkBQWXI6sHqwHiwG70TTBxGaiWwjCTGgOUgJiF1J8wMRAIUA34B4Q76HUBelAfJYSA0CuMIEaRP8wGIkGMA54bgQIMACAmkXJi0hKJQAAAABJRU5ErkJggg%3D%3D%29%20no%2Drepeat%2010px%20center%3B%0Atext%2Ddecoration%3A%20none%3B%20%7D%0Ah1%20tt%20%7B%0Afont%2Dsize%3A%20inherit%3B%20%7D%0Ah2%20tt%20%7B%0Afont%2Dsize%3A%20inherit%3B%20%7D%0Ah3%20tt%20%7B%0Afont%2Dsize%3A%20inherit%3B%20%7D%0Ah4%20tt%20%7B%0Afont%2Dsize%3A%20inherit%3B%20%7D%0Ah5%20tt%20%7B%0Afont%2Dsize%3A%20inherit%3B%20%7D%0Ah6%20tt%20%7B%0Afont%2Dsize%3A%20inherit%3B%20%7D%0Ah1%20code%20%7B%0Afont%2Dfamily%3A%20%27Ricty%20Diminished%20Discord%27%2C%20%27source%2Dcode%2Dpro%27%2C%20%27Monaco%27%2C%20%27Menlo%27%2C%20%27Consolas%27%2C%20%27Osaka%27%2C%20%27Courier%20New%27%2C%20%27monospace%27%2C%20%27%EF%BC%AD%EF%BC%B3%E3%82%B4%E3%82%B7%E3%83%83%E3%82%AF%27%3B%0Afont%2Dsize%3A%20inherit%3B%20%7D%0Ah2%20code%20%7B%0Afont%2Dfamily%3A%20%27Ricty%20Diminished%20Discord%27%2C%20%27source%2Dcode%2Dpro%27%2C%20%27Monaco%27%2C%20%27Menlo%27%2C%20%27Consolas%27%2C%20%27Osaka%27%2C%20%27Courier%20New%27%2C%20%27monospace%27%2C%20%27%EF%BC%AD%EF%BC%B3%E3%82%B4%E3%82%B7%E3%83%83%E3%82%AF%27%3B%0Afont%2Dsize%3A%20inherit%3B%20%7D%0Ah3%20code%20%7B%0Afont%2Dfamily%3A%20%27Ricty%20Diminished%20Discord%27%2C%20%27source%2Dcode%2Dpro%27%2C%20%27Monaco%27%2C%20%27Menlo%27%2C%20%27Consolas%27%2C%20%27Osaka%27%2C%20%27Courier%20New%27%2C%20%27monospace%27%2C%20%27%EF%BC%AD%EF%BC%B3%E3%82%B4%E3%82%B7%E3%83%83%E3%82%AF%27%3B%0Afont%2Dsize%3A%20inherit%3B%20%7D%0Ah4%20code%20%7B%0Afont%2Dfamily%3A%20%27Ricty%20Diminished%20Discord%27%2C%20%27source%2Dcode%2Dpro%27%2C%20%27Monaco%27%2C%20%27Menlo%27%2C%20%27Consolas%27%2C%20%27Osaka%27%2C%20%27Courier%20New%27%2C%20%27monospace%27%2C%20%27%EF%BC%AD%EF%BC%B3%E3%82%B4%E3%82%B7%E3%83%83%E3%82%AF%27%3B%0Afont%2Dsize%3A%20inherit%3B%20%7D%0Ah5%20code%20%7B%0Afont%2Dfamily%3A%20%27Ricty%20Diminished%20Discord%27%2C%20%27source%2Dcode%2Dpro%27%2C%20%27Monaco%27%2C%20%27Menlo%27%2C%20%27Consolas%27%2C%20%27Osaka%27%2C%20%27Courier%20New%27%2C%20%27monospace%27%2C%20%27%EF%BC%AD%EF%BC%B3%E3%82%B4%E3%82%B7%E3%83%83%E3%82%AF%27%3B%0Afont%2Dsize%3A%20inherit%3B%20%7D%0Ah6%20code%20%7B%0Afont%2Dfamily%3A%20%27Ricty%20Diminished%20Discord%27%2C%20%27source%2Dcode%2Dpro%27%2C%20%27Monaco%27%2C%20%27Menlo%27%2C%20%27Consolas%27%2C%20%27Osaka%27%2C%20%27Courier%20New%27%2C%20%27monospace%27%2C%20%27%EF%BC%AD%EF%BC%B3%E3%82%B4%E3%82%B7%E3%83%83%E3%82%AF%27%3B%0Afont%2Dsize%3A%20inherit%3B%20%7D%0Ah1%20%7B%0Afont%2Dsize%3A%2042px%3B%0Acolor%3A%20%23222233%3B%0Aborder%2Dbottom%3A%201px%20solid%20%23422233%3B%20%7D%0Ah2%20%7B%0Afont%2Dsize%3A%2036px%3B%0Aborder%2Dbottom%3A%201px%20dashed%20%23aaaaaa%3B%20%7D%0Ah3%20%7B%0Afont%2Dsize%3A%2030px%3B%0Aborder%2Dbottom%3A%201px%20dotted%20%23cccccc%3B%20%7D%0Ah4%20%7B%0Afont%2Dsize%3A%2024px%3B%20%7D%0Ah5%20%7B%0Afont%2Dsize%3A%2018px%3B%20%7D%0Ah6%20%7B%0Acolor%3A%20%23555555%3B%0Afont%2Dsize%3A%2014px%3B%20%7D%0Ap%2C%20table%2C%20dl%2C%20table%2C%20pre%7B%0Amargin%3A%2014px%200%3B%20%7D%0Ablockquote%2C%20ul%2C%20ol%2Cli%2C%20pre%20%7B%0Amargin%3A%201px%200%3B%20%7D%0Ahr%20%7B%0Abackground%3A%20transparent%20url%28data%3Aimage%2Fpng%3Bbase64%2CiVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw%2FeHBhY2tldCBiZWdpbj0i77u%2FIiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8%2BIDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI%2FPqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC%29%20repeat%2Dx%200%200%3B%0Aborder%3A%200%20none%3B%0Acolor%3A%20%23cccccc%3B%0Aheight%3A%204px%3B%0Apadding%3A%200%3B%20%7D%0Abody%20%3E%20h2%3Afirst%2Dchild%20%7B%0Amargin%2Dtop%3A%200%3B%0Apadding%2Dtop%3A%200%3B%20%7D%0Abody%20%3E%20h1%3Afirst%2Dchild%20%7B%0Amargin%2Dtop%3A%200%3B%0Apadding%2Dtop%3A%200%3B%20%7D%0Abody%20%3E%20h1%3Afirst%2Dchild%20%2B%20h2%20%7B%0Amargin%2Dtop%3A%200%3B%0Apadding%2Dtop%3A%200%3B%20%7D%0Abody%20%3E%20h3%3Afirst%2Dchild%2C%20body%20%3E%20h4%3Afirst%2Dchild%2C%20body%20%3E%20h5%3Afirst%2Dchild%2C%20body%20%3E%20h6%3Afirst%2Dchild%20%7B%0Amargin%2Dtop%3A%200%3B%0Apadding%2Dtop%3A%200%3B%20%7D%0Aa%3Afirst%2Dchild%20h1%2C%20a%3Afirst%2Dchild%20h2%2C%20a%3Afirst%2Dchild%20h3%2C%20a%3Afirst%2Dchild%20h4%2C%20a%3Afirst%2Dchild%20h5%2C%20a%3Afirst%2Dchild%20h6%20%7B%0Amargin%2Dtop%3A%200%3B%0Apadding%2Dtop%3A%200%3B%20%7D%0Ah1%20p%2C%20h2%20p%2C%20h3%20p%2C%20h4%20p%2C%20h5%20p%2C%20h6%20p%20%7B%0Amargin%2Dtop%3A%200%3B%20%7D%0Ali%20p%2Efirst%20%7B%0Adisplay%3A%20inline%2Dblock%3B%20%7D%0Aul%2C%20ol%20%7B%0Apadding%2Dleft%3A%2030px%3B%20%7D%0Aul%20%3Afirst%2Dchild%2C%20ol%20%3Afirst%2Dchild%20%7B%0Amargin%2Dtop%3A%200%3B%20%7D%0Aul%20%3Alast%2Dchild%2C%20ol%20%3Alast%2Dchild%20%7B%0Amargin%2Dbottom%3A%200%3B%20%7D%0Adl%20%7B%0Apadding%3A%200%3B%20%7D%0Adl%20dt%20%7B%0Afont%2Dsize%3A%2014px%3B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dstyle%3A%20italic%3B%0Apadding%3A%200%3B%0Amargin%3A%2015px%200%205px%3B%20%7D%0Adl%20dt%3Afirst%2Dchild%20%7B%0Apadding%3A%200%3B%20%7D%0Adl%20dt%20%3E%20%3Afirst%2Dchild%20%7B%0Amargin%2Dtop%3A%200%3B%20%7D%0Adl%20dt%20%3E%20%3Alast%2Dchild%20%7B%0Amargin%2Dbottom%3A%200%3B%20%7D%0Adl%20dd%20%7B%0Amargin%3A%200%200%2015px%3B%0Apadding%3A%200%2015px%3B%20%7D%0Adl%20dd%20%3E%20%3Afirst%2Dchild%20%7B%0Amargin%2Dtop%3A%200%3B%20%7D%0Adl%20dd%20%3E%20%3Alast%2Dchild%20%7B%0Amargin%2Dbottom%3A%200%3B%20%7D%0Ablockquote%20%7B%0Aborder%2Dleft%3A%204px%20solid%20%23dddddd%3B%0Apadding%3A%200%2015px%3B%0Acolor%3A%20%23777777%3B%20%7D%0Ablockquote%20%3E%20%3Afirst%2Dchild%20%7B%0Amargin%2Dtop%3A%200%3B%20%7D%0Ablockquote%20%3E%20%3Alast%2Dchild%20%7B%0Amargin%2Dbottom%3A%200%3B%20%7D%0Atable%20%7B%0Awidth%3A%20auto%0Apadding%3A%200%3B%20%7D%0Atable%20tr%20%7B%0Aborder%2Dtop%3A%201px%20solid%20%23cccccc%3B%0Abackground%2Dcolor%3A%20white%3B%0Amargin%3A%200%3B%0Apadding%3A%200%3B%20%7D%0Atable%20tr%3Anth%2Dchild%282n%29%20%7B%0Abackground%2Dcolor%3A%20%23f8f8f8%3B%20%7D%0Atable%20tr%20th%20%7B%0Abackground%2Dcolor%3A%20%23333333%3B%0Acolor%3A%20%23eeeeee%3B%0Afont%2Dweight%3A%20bold%3B%0Aborder%3A%201px%20solid%20%23cccccc%3B%0Atext%2Dalign%3A%20left%3B%0Amargin%3A%200%3B%0Apadding%3A%206px%2013px%3B%20%7D%0Atable%20tr%20td%20%7B%0Aborder%3A%201px%20solid%20%23cccccc%3B%0Atext%2Dalign%3A%20left%3B%0Amargin%3A%200%3B%0Apadding%3A%206px%2013px%3B%20%7D%0Atable%20tr%20th%20%3Afirst%2Dchild%2C%20table%20tr%20td%20%3Afirst%2Dchild%20%7B%0Amargin%2Dtop%3A%200%3B%20%7D%0Atable%20tr%20th%20%3Alast%2Dchild%2C%20table%20tr%20td%20%3Alast%2Dchild%20%7B%0Amargin%2Dbottom%3A%200%3B%20%7D%0Aimg%20%7B%0Amax%2Dwidth%3A%20100%25%3B%20%7D%0Aspan%2Eframe%20%7B%0Adisplay%3A%20block%3B%0Aoverflow%3A%20hidden%3B%20%7D%0Aspan%2Eframe%20%3E%20span%20%7B%0Aborder%3A%201px%20solid%20%23dddddd%3B%0Adisplay%3A%20block%3B%0Afloat%3A%20left%3B%0Aoverflow%3A%20hidden%3B%0Amargin%3A%2013px%200%200%3B%0Apadding%3A%207px%3B%0Awidth%3A%20auto%3B%20%7D%0Aspan%2Eframe%20span%20img%20%7B%0Adisplay%3A%20block%3B%0Afloat%3A%20left%3B%20%7D%0Aspan%2Eframe%20span%20span%20%7B%0Aclear%3A%20both%3B%0Acolor%3A%20%23333333%3B%0Adisplay%3A%20block%3B%0Apadding%3A%205px%200%200%3B%20%7D%0Aspan%2Ealign%2Dcenter%20%7B%0Adisplay%3A%20block%3B%0Aoverflow%3A%20hidden%3B%0Aclear%3A%20both%3B%20%7D%0Aspan%2Ealign%2Dcenter%20%3E%20span%20%7B%0Adisplay%3A%20block%3B%0Aoverflow%3A%20hidden%3B%0Amargin%3A%2013px%20auto%200%3B%0Atext%2Dalign%3A%20center%3B%20%7D%0Aspan%2Ealign%2Dcenter%20span%20img%20%7B%0Amargin%3A%200%20auto%3B%0Atext%2Dalign%3A%20center%3B%20%7D%0Aspan%2Ealign%2Dright%20%7B%0Adisplay%3A%20block%3B%0Aoverflow%3A%20hidden%3B%0Aclear%3A%20both%3B%20%7D%0Aspan%2Ealign%2Dright%20%3E%20span%20%7B%0Adisplay%3A%20block%3B%0Aoverflow%3A%20hidden%3B%0Amargin%3A%2013px%200%200%3B%0Atext%2Dalign%3A%20right%3B%20%7D%0Aspan%2Ealign%2Dright%20span%20img%20%7B%0Amargin%3A%200%3B%0Atext%2Dalign%3A%20right%3B%20%7D%0Aspan%2Efloat%2Dleft%20%7B%0Adisplay%3A%20block%3B%0Amargin%2Dright%3A%2013px%3B%0Aoverflow%3A%20hidden%3B%0Afloat%3A%20left%3B%20%7D%0Aspan%2Efloat%2Dleft%20span%20%7B%0Amargin%3A%2013px%200%200%3B%20%7D%0Aspan%2Efloat%2Dright%20%7B%0Adisplay%3A%20block%3B%0Amargin%2Dleft%3A%2013px%3B%0Aoverflow%3A%20hidden%3B%0Afloat%3A%20right%3B%20%7D%0Aspan%2Efloat%2Dright%20%3E%20span%20%7B%0Adisplay%3A%20block%3B%0Aoverflow%3A%20hidden%3B%0Amargin%3A%2013px%20auto%200%3B%0Atext%2Dalign%3A%20right%3B%20%7D%0Acode%2C%20tt%20%7B%0Amargin%3A%200%202px%3B%0Apadding%3A%200%205px%3B%0Awhite%2Dspace%3A%20nowrap%3B%0Aborder%3A%201px%20solid%20%23eaeaea%3B%0Abackground%2Dcolor%3A%20%23f8f8f8%3B%0Afont%2Dfamily%3A%20%27Ricty%20Diminished%20Discord%27%2C%20%27source%2Dcode%2Dpro%27%2C%20%27Monaco%27%2C%20%27Menlo%27%2C%20%27Consolas%27%2C%20%27Osaka%27%2C%20%27Courier%20New%27%2C%20%27monospace%27%2C%20%27%EF%BC%AD%EF%BC%B3%E3%82%B4%E3%82%B7%E3%83%83%E3%82%AF%27%3B%0Aborder%2Dradius%3A%203px%3B%20%7D%0Apre%20code%20%7B%0Amargin%3A%200%3B%0Apadding%3A%200%3B%0Awhite%2Dspace%3A%20pre%3B%0Aborder%3A%20none%3B%0Afont%2Dfamily%3A%20%27Ricty%20Diminished%20Discord%27%2C%20%27source%2Dcode%2Dpro%27%2C%20%27Monaco%27%2C%20%27Menlo%27%2C%20%27Consolas%27%2C%20%27Osaka%27%2C%20%27Courier%20New%27%2C%20%27monospace%27%2C%20%27%EF%BC%AD%EF%BC%B3%E3%82%B4%E3%82%B7%E3%83%83%E3%82%AF%27%3B%0Abackground%3A%20transparent%3B%20%7D%0A%2Ehighlight%20pre%20%7B%0Abackground%2Dcolor%3A%20%23f8f8f8%3B%0Aborder%3A%201px%20solid%20%23cccccc%3B%0Afont%2Dsize%3A%2013px%3B%0Aline%2Dheight%3A%2019px%3B%0Aoverflow%3A%20auto%3B%0Apadding%3A%206px%2010px%3B%0Aborder%2Dradius%3A%203px%3B%20%7D%0Apre%20%7B%0Abackground%2Dcolor%3A%20%23f8f8f8%3B%0Aborder%3A%201px%20solid%20%23cccccc%3B%0Afont%2Dsize%3A%2013px%3B%0Aline%2Dheight%3A%2019px%3B%0Aoverflow%3A%20auto%3B%0Apadding%3A%206px%2010px%3B%0Aborder%2Dradius%3A%203px%3B%20%7D%0Apre%20code%2C%20pre%20tt%20%7B%0Abackground%2Dcolor%3A%20transparent%3B%0Aborder%3A%20none%3B%20%7D%0A" rel="stylesheet">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="markdownとpandocの指針">MarkdownとPandocの指針</h1>
+<p>研究に活きるMarkdownとPandocの使い方を紹介します．</p>
+<h2 id="markdownとは">Markdownとは <!-- {{{ --></h2>
+<p><a href="https://ja.wikipedia.org/wiki/Markdown">Markdown</a>は，軽量<a href="https://ja.wikipedia.org/wiki/マークアップ言語">マークアップ言語</a>の一種などと説明されるが，あまり詳しいことは気にしなくてよい．<br />
+ものすごくざっくり言うと，&quot;Markdownとは，コマンド(のようなもの)で文字の大きさや書式を指定する書き方&quot;のことである．</p>
+<p>一応，コマンドのようなもので書式を指定するので，<strong>Markdownを使いこなすために覚えなければいけないことは多少ある．</strong><br />
+ただ，その覚えなければいけないこと(文法だと思ったらよい)は，かなり少ないし，しかも直感的なので，想像以上に簡単だと思う．<br />
+習うより慣れろの精神で，まずは<a href="http://www.markdowntutorial.com/lesson/1/">チュートリアル</a>してみるのが良いだろう．</p>
+<!-- }}} -->
+<h2 id="markdownのメリット">Markdownのメリット <!-- {{{ --></h2>
+<p>Markdownは，以下の様な素晴らしい点がある．</p>
+<dl>
+<dt>いちいちボタンをクリックしなくても，太字や斜体などの文字装飾ができる</dt>
+<dd>Wordだと，わざわざマウスを動かして，文字を選択して<code>Ctrl-I</code>とか斜体ボタンを押して，もともと編集していた場所に戻って…というクソ以下の手順があるが，Markdownでは，この単語を斜体にしたいなーと思ったら，<strong>置換機能などで一気に書式を変換できる．</strong>
+</dd>
+<dt>文字だけで構成されるので，置換や検索が簡単</dt>
+<dd>上記にも例示したように，すべて文字だけで構成されているので，<strong>置換を使った書式の指定や，斜体の単語だけ検索(遺伝子名のチェックなどにものすごく便利)などが可能になる．</strong>
+</dd>
+<dt>アウトラインで書く習慣がつく</dt>
+<dd><a href="https://www.chem-station.com/blog/2009/12/whitesides_group_writing_a_pa.html">Whitesides研の論文の書き方</a>や近藤滋が推奨するように，アウトラインとして論文を書くのが良いとされているが，Markdownは，アウトライン的に(構造的/階層的に)書くように出来ているので，頭を整理しながら文章が書ける．
+</dd>
+</dl>
+<p>これ以外にも，</p>
+<ul>
+<li>Gitで管理できる</li>
+<li>プレーンテキストなので，プログラムを組んで複雑なテキスト処理もできる</li>
+<li>ファイルサイズが小さい</li>
+<li>ドキュメントのデファクトスタンダードになっている</li>
+<li>HTML記法も使える</li>
+<li>HTMLコメントの挿入ができる</li>
+<li>Introduction, Result, Discussion... (もちろんもっと細かい区分でも)をファイルを分けて書けるので，フォルダの整理がしやすい</li>
+<li>etc.</li>
+</ul>
+<p>と，良いことが本当にたくさんある．</p>
+<!-- }}} -->
+<h2 id="初心者がmarkdownに心配すること">初心者がMarkdownに心配すること <!-- {{{ --></h2>
+<dl>
+<dt>本当に覚えられるのか</dt>
+<dd>想像以上に簡単です．
+</dd>
+<dt>文字だけのファイルって，図は入れられるの?</dt>
+<dd><a href="https://gist.github.com/Tatzyr/3847141">図の挿入</a>も簡単です．
+</dd>
+<dt>じゃあ表は入れられる?</dt>
+<dd><a href="https://qiita.com/zakuroishikuro/items/f33929eab9d55c5bd073">楽勝です</a>．
+</dd>
+<dt>論文書くためにはReferenceも入れなきゃだけど，さすがに無理でしょ?</dt>
+<dd>Referenceを自動で作成する方法があります(後述)．<br />
+(でもHTMLファイルにはできないのが残念．)
+</dd>
+<dt>でもボスにはWordファイルにして渡すし...</dt>
+<dd><a href="https://qiita.com/sky_y/items/80bcd0f353ef5b8980ee">Wordファイル，PDFファイル，HTMLファイルへの変換</a>は一瞬でできます．<br />
+なんなら，<a href="https://qiita.com/sky_y/items/f38db5dd69720e5ca0cf">PowerPointファイル</a>だって作れます(マジで)．<br />
+当然，挿入した図は，WordやPDF，HTMLでも正しく挿入されます．
+</dd>
+<dt>数式を入れたいけど無理よね</dt>
+<dd><a href="https://qiita.com/Kumassy/items/5b6ae6b99df08fb434d9#式の書き方">LaTeX記法による数式記述</a>ができるし，Wordに変換しても問題なく表示されます．<br />
+HTMLではできないけど...
+</dd>
+<dt>目次くらい自動で入れられないのか</dt>
+<dd>Wordファイルではできないけど，<a href="https://www.yamamanx.com/pandoc-pdf-latex-header/">HTMLファイルとPDFファイルなら目次の自動作成</a>ができます．
+</dd>
+<dt>さすがに分子式は無理でしょ</dt>
+<dd>追加のプラグインは必要ですが，<a href="https://qiita.com/Kumassy/items/5b6ae6b99df08fb434d9#分子式を書く">分子式だって記述</a>できます．
+</dd>
+<dt>ページ数の挿入は?</dt>
+<dd>当然できます．
+</dd>
+<dt>やっぱり覚えるのが面倒...</dt>
+<dd>覚えた時間は簡単に取り返せるくらい，書くスピードが上がります(体験者談)．
+</dd>
+</dl>
+<p>Markdownと，後述するPandocを用いることで，サクサクプロトコル，覚書などが書けるようになります．<br />
+(論文もサクサク書けるようになりたいけど，個人的な能力の問題でできない)<br />
+論文を書くために必要十分の機能がMarkdownとPandocには備わっているので，安心してWordから乗り換えましょう．</p>
+<!-- }}} -->
+<h2 id="markdownの勉強方法">Markdownの勉強方法 <!-- {{{ --></h2>
+<ol type="1">
+<li><a href="http://www.markdowntutorial.com/lesson/1/">チュートリアル</a>をしましょう．<br />
+チュートリアルが終われば，基本的な文法は勉強が終わっています．<br />
+</li>
+<li><a href="http://www.grkt.com/2013/01/14/1422">このへん</a>や<a href="https://qiita.com/tbpgr/items/989c6badefff69377da7">このへん</a>を読んで，チュートリアルの復習をしましょう．<br />
+</li>
+<li>わからないことは<a href="https://www.google.co.jp/search?q=markdown%20%E6%94%B9%E8%A1%8C%20%E6%96%87%E6%B3%95">ググりましょう</a>．<br />
+</li>
+<li>あとは，<a href="https://hackmd.io">HackMD</a>や<a href="https://simplenote.com">Simplenote</a>などに登録して，自分用のメモをMarkdownでガシガシ書いていきましょう．</li>
+<li><a href="https://atom.io">Atom</a>に<a href="https://qiita.com/kouichi-c-nakamura/items/5b04fb1a127aac8ba3b0">Markdownプレビューワのプラグインをいれて</a>，日常生活にMarkdownを取り入れましょう．</li>
+</ol>
+<p>日常使いする文には，Markdown Previewerがあると便利です．<br />
+<a href="https://www.google.co.jp/search?q=markdown%20previewer%20software">こんな感じでググって</a>，自分に合うものを探しましょう．</p>
+<!-- }}} -->
+<h2 id="pandocとは">Pandocとは <!-- {{{ --></h2>
+<p>さて，上述の方法だけでは，MarkdownをWordファイルやPDFファイルに変換することは出来ません．<br />
+Markdownの変換のデファクトスタンダードになっているのが，<a href="https://pandoc.org">Pandoc</a>です．<br />
+日本語の詳しい情報は<a href="http://sky-y.github.io/site-pandoc-jp/">日本Pandocユーザ会</a>に詳しいです．</p>
+<p>Pandocとは，ざっくりいうと，MarkdownやHTML，Wordなどのファイルを，異なる形式のファイルに変換するソフトのことです．<br />
+今回はMarkdownからの変換しか扱いませんが，HTMLからの変換なども便利です．</p>
+<!-- }}} -->
+<h2 id="pandocの導入">Pandocの導入 <!-- {{{ --></h2>
+<ol type="1">
+<li><a href="https://www.google.co.jp/search?q=pandoc%20%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%20%E6%96%B9%E6%B3%95">インストール方法は自分で調べましょう</a>．</li>
+<li>初心者向けの記事<a href="https://qiita.com/sky_y/items/5fd5c9568ea550b1d7af">たとえば</a>を読みましょう(これ以外にも自分で<a href="https://www.google.co.jp/search?q=pandoc%20%E5%88%9D%E5%BF%83%E8%80%85">ググりましょう</a>)．</li>
+</ol>
+<!-- }}} -->
+<h2 id="pandocで本記事と同じ様式のhtmlを作る">Pandocで本記事と同じ様式のHTMLを作る <!-- {{{ --></h2>
+<p>Pandocは，もう使える状態であるとします．</p>
+<p>Pandocを用いてMarkdown -&gt; HTML変換をしましょう． HTMLファイルでドキュメントを残す利点は，</p>
+<ul>
+<li>誰が見ても(ほぼ)同じ見た目にできる</li>
+<li>デフォルトではウェブブラウザによって閲覧されるので，故意でないかぎり，文章の変更ができない</li>
+<li>新しくメモ帳などでの閲覧がされないので，アプリを開きすぎなくて済む</li>
+<li>スマホでも読める</li>
+<li>ボスのような古い人間でも，開いて読むことができる!</li>
+</ul>
+<p>などなどあるので，マスターして損はない．</p>
+<p>まず，CSSをダウンロードしましょう．<br />
+CSSとは，HTMLファイルの見た目を制御する枠組みのような存在である．<br />
+たとえば，&quot;表だけ見た目を変えたい&quot;というときがあったとする．<br />
+いちいち，HTMLファイルそのものに見た目を制御する命令を書いていると，HTML中で表の見た目を記載している部分を<strong>すべて</strong>変更しなければいけなくなる．<br />
+CSSでは，&quot;表に関して，こういう見た目にせよ&quot;という枠組みを与えるので，CSSだけ変更すれば，HTML中のすべての表の見た目を変えられる．</p>
+<p>能書きはこのくらいにして，実際のCSSファイルだが，<code>html_sample_in</code>フォルダに，本記事と同じ様式にできるCSS(<code>original_ishibashi.css</code>)がある．<br />
+おなじフォルダに，<code>sample1.md</code>というファイルがある<a href="https://qiita.com/salchu/items/da81122ed50b35feda4d">引用元</a>．<br />
+このHTMLが入っている<code>GuideForMarkdown</code>というディレクトリを，自分の環境にコピーしてきて，<code>html_sample_in</code>に入ってほしい．<br />
+このフォルダの内部で以下のコマンドを実行する．</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="ex">pandoc</span> -S -s --self-contained -t html5 -f markdown -c ./original_ishibashi.css -o ../html_sample_out/sample1.html ./sample1.md</code></pre></div>
+<p>これにより，HTMLファイルが，<code>html_sample_out</code>フォルダ内に，<code>sample1.html</code>として生成されたはずである．<br />
+開いてみて，おーーMarkdownからキレイにHTMLができたーー!という実感を持ってほしい．</p>
+<p>あとは，コマンドをよく見て，オプションを勉強すれば，HTMLの作成はお手の物である．</p>
+<!-- }}} -->
+<h2 id="pandocで論文を書きwordファイルにする">Pandocで論文を書きWordファイルにする <!-- {{{ --></h2>
+<p>なにはともあれ，変換して，凄さを理解したほうがいい．<br />
+下記コマンドを，<code>docx_sample_in</code>フォルダ内で実行してみてほしい．<br />
+すると，<code>docx_sample_out</code>フォルダに，Wordファイルが生成されている．<br />
+初めて使ったら，マジで感動すると思う．</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="op">&gt;</span> <span class="ex">pandoc</span> -f markdown -t docx -S --reference-docx ./reference.docx --bibliography ./citations.bib --csl ./apa.csl -o ../docx_sample_out/sample.docx ./1_title.md ./2_abstruct.md ./3_intro.md ./4_exp-proc.md ./5_result.md ./6_discussion.md ./7_figs-tables.md ./8_references.md</code></pre></div>
+<p><details><summary>もともとのマークダウンファイルの中身は本当に文字だけしか入っていない</summary> <!-- {{{ --></p>
+<pre><code># E and ID proteins regulate cell chirality and left-right asymmetric development in *Drosophila*
+
+Tomoki Ishibashi^1^, Ryo Hatori^1^, Reo Maeda^2^, Mitsutoshi Nakamura^1^, Tomohiro Taguchi^2^, Yoko Matsuyama^1^, and Kenji Matsuno^1\*^  
+^1^ Department of Biological Sciences, Osaka University, 1-1 Machikaneyama-cho, Toyonaka, Osaka 560-0043, Japan; ^2^ Department of Biological Science and Technology, Tokyo University of Science, Noda, Chiba, Japan  
+^\*^ Corresponding author. Tel.: +81-6-6850-5805; Fax: +81-6-6850-5805  
+E-mail addresses: Kenji Matsuno: kmatsuno@bio.sci.osaka-u.ac.jp  
+Short title: E and ID regulate left-right asymmetry  
+Keywords: E protein, Id protein, Left-right asymmetry, Myosin ID, Cell chirality.
+
+\clearpage
+
+## Abstruct
+
+How left-right (LR) asymmetry forms in the animal body is a fundamental problem in Developmental Biology.
+While the mechanisms for LR asymmetry are well studied in some species, they are still poorly understood in invertebrates.
+We previously showed that the intrinsic LR asymmetry of cells (designated as cell chirality) drives LR asymmetric development in the *Drosophila* embryonic hindgut, although the machinery of the cell chirality formation remains elusive.
+Here, we found that the *Drosophila* homolog of the *Id* gene, *extra macrochaetae* (*emc*), is required for the normal LR asymmetric morphogenesis of this organ.
+Id proteins, including Emc, are known to interact with and inhibit E-box-binding proteins (E proteins), such as *Drosophila* Daughterless (Da).
+We found that the suppression of da by wild-type *emc* was essential for cell chirality formation and for normal LR asymmetric development of the embryonic hindgut.
+*MyosinID* (*MyoID*), which encodes the *Drosophila* Myosin ID protein, is known to regulate cell chirality.
+We further showed that Emc-Da regulates cell chirality formation, in which Emc functions upstream of or parallel to MyoID.
+Abnormal Id-E protein regulation is involved in various human diseases.
+Our results suggest that defects in cell shape may contribute to the pathogenesis of such diseases.
+
+## Introduction
+
+### Left-right asymmetry in animals
+
+Many animals show the directional LR asymmetry in their body structures and functions. Mechanisms of LR asymmetric development have been the one of central question in Developmental Biology [@Levin2005].
+The molecular mechanisms of the LR asymmetric development have been well studied, although mostly in vertebrates [@Blum2018; @Kimelman2012; @Riechmann2001].
+For example, in some vertebrates, the LR symmetry is first broken by an LR directional flow of extra-embryonic fluid, which is induced by ciliary rotation in the node or its equivalent tissue in early embryos [@Yoshiba2014].
+In contrast, in invertebrates the mechanisms of LR-asymmetry formation remain unclear, although a few excellent studies have unveiled basic concepts behind the directional LR asymmetry formation in nematodes, snails, and *Drosophila* [@Blum2018; @Kuroda2009;@Okumura2008; @Speder2007].
+Some invertebrate species develop LR asymmetric body structures using mechanisms arising from the intrinsic chirality of blastomeres or cells in tissues, which is distinct from the mechanism used in vertebrates, indicating that the processes for directional LR symmetric development diverged in evolution [@Blum2018; @Inaki2018; @Okumura2008].
+
+Several organs in *Drosophila* also show a directional LR asymmetric morphology [@Hayashi2001; @Hozumi2006; @Ligoxygakis2001; @Pascual2004; @Speder2006].
+Among these organs, the embryonic gut is the first to exhibit an LR asymmetric shape during development [@Campos-Ortega2015; @Hayashi2001; @Ligoxygakis2001].
+The embryonic hindgut shows the simple morphology exhibiting the stereotypic LR asymmetry, in which a monolayer epithelial tube bends like a hook at its most anterior part (Fig. 1A).
+At an early stage of embryonic development (stage 12), the hindgut is LR symmetric and bends toward the ventral side of the embryo (Fig. 1A).
+At the next stage of development (stage 12-13), the hindgut rotates anticlockwise 90°, which causes the hindgut to curve rightward and to be LR asymmetric (Fig. 1A) [@Hayashi2001; @Hozumi2006].
+Neither cell division nor apoptosis is involved in this rotation [@Campos-Ortega2015].
+Moreover, the embryonic hindgut epithelial tube, but not the surrounding visceral muscles, is sufficient for this rotation [@Hozumi2006; @Nakamura2013].
+Thus, LR asymmetric cell deformation of the hindgut epithelial cells themselves may contribute to the hindgut rotation.
+
+### Cell chirality
+
+In agreement with this idea, we previously reported that the epithelial cells of the embryonic hindgut exhibit an LR-asymmetric shape in their apical surface before hindgut rotation [@Hatori2014; @Inaki2016; @Inaki2018a; @Inaki2018; @Taniguchi2011].
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+## Experimental Procedures
+
+### *Drosophila* strains and genetic crosses
+
+*Canton-S* was used as the wild-type (WT) strain.
+The following mutants were used: *emc^tink^*, a null allele induced by ethyl methanesulfonate in this study;
+*emc^AP6^*, an amorphic allele [Bloomington #36544; @Ellis1994];
+*emc^2^*, a hypomorphic allele [Kyoto DGRC #101588; @Ellis1990].
+
+Mutations on the first and second chromosome were balanced with *FM7c, P{ftz/lacC}YH1* and *CyO, P{en1}wg^en11^*, respectively.
+Mutations on the third chromosome were balanced with _TM3, P{ftz-lacZ.ry^+^}TM3, Sb^1^ ry^\*^_, *TM6B, P{iab-2(1.7)lacZ}6B, Tb^1^*, or *TM3, P{GAL4-twi.G}2.3, P{UAS-2xEGFP}AH2.3, Sb^1^ Ser^1^*.
+All genetic crosses were performed at 25 °C on a standard *Drosophila* culture medium.
+
+### Staining of embryos
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+## Results
+
+### *emc* is required for LR-asymmetric development of the embryonic hindgut
+
+Sample equation $E = mc^2$.
+You can write block-style equation.
+$$f(\theta) = e^{-i\theta} = \cos \theta + i \cdot \sin \theta$$
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+### Result 2
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+## Discussion
+
+### Discussion 1
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+### Discussion 2
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+## Figures and Tables
+
+### Figure 1
+
+![](./img/fig1.jpg)  
+**Fig. 1.** ***emc*** **mutant embryos show defects in LR asymmetric development of the embryonic hindgut.**  
+(A)
+Schematic showing the LR asymmetric development of the *Drosophila* embryonic hindgut as viewed from the dorsal side.
+The hindgut has an LR symmetric shape bending dorsally (left) at stage 12, and then undergoes a counterclockwise (broken arrow) rotation from late stage 12, consequently bending to the right at stage 13 (right).
+(B-C)
+The hindgut (orange) of wild-type embryos at stage 12 (B) and stage 13 (C).
+(D-I)
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+### Figure 2
+
+![](./img/fig2.jpg)  
+**Fig. 2. Figure Title.**  
+(A)
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+(B)
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+### Table S1
+
+| *emc* expression in the hindgut | stage 11   | stage 12   | stage 14   |
+| ------------------------------: | :--------- | :--------- | :--------- |
+| +                               | 11         | 4          | 0          |
+| +/-                             | 1          | 13         | 7          |
+| -                               | 0          | 0          | 14         |
+| **TOTAL**                       | **12**     | **17**     | **21**     |
+
+**Table S1**
+The expression of *emc* was detected by *in situ* hybridization using an antisense probe for *emc* (see Figure 2).
+The numbers of embryos showing *emc* signals in the hindgut primordium and hindgut are shown.
++, strong signal;
++/-, weak signal;
+-, no signal.
+
+## References</code></pre>
+<hr />
+<p></details> <!-- }}} --></p>
+<!-- }}} -->
+<h2 id="一旦pdfも作ってみる">一旦，PDFも作ってみる <!-- {{{ --></h2>
+<p>PDFの方は，ちょっと調教が足りないので，あまり良い見た目に調整できていない．<br />
+でもひとまず，下記コマンドを使うと，<code>docx_sample_out</code>フォルダに，PDFファイルが生成される．<br />
+ここでのコツは，最初にメタデータにタイトルや著者情報を記載し，<code>1_title.md</code>や<code>2_abstruct.md</code>を読み込ませずに<code>0_metadata</code>を読み込ませるところにある．<br />
+これにより，LaTeXぽい美しいPDFができる．<br />
+なんかTableの見た目が間違っているのだが，これはどうすればいいのか．</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="ex">pandoc</span> -f markdown -t latex -V geometry:margin=3cm -V geometry:a4paper --toc -S --bibliography ./citations.bib --csl ./apa.csl -o ../docx_sample_out/sample.pdf ./0_metadata ./3_intro.md ./4_exp-proc.md ./5_result.md ./6_discussion.md ./7_figs-tables.md ./8_references.md</code></pre></div>
+<!-- }}} -->
+<h2 id="bibファイルの作成"><code>.bib</code>ファイルの作成 <!-- {{{ --></h2>
+<p>Referenceの自動作成は，本当に素晴らしい機能である．<br />
+これは，<code>--bibliograpy</code>オプションで設定する<code>.bib</code>ファイルによって，自動生成される．<br />
+ここでは，<code>.bib</code>ファイルの作成方法を説明する．</p>
+<p><a href="https://www.mendeley.com/">Mendeley</a>というソフトをダウンロードする．<br />
+これは，論文管理ソフトで論文情報を収集してくれる．<br />
+適当に，論文をMendeleyに放り込んでいこう．<br />
+使い方は<a href="https://www.google.co.jp/search?q=mendeley%20%E4%BD%BF%E3%81%84%E6%96%B9">調べよう</a>．<br />
+それだけでは，号数などの情報が不足しているので，放り込んだ論文を全選択して，右クリック→<code>Update Details</code>をクリックする．<br />
+これによって，doiなどを含めた，沢山の情報がゲットできる．<br />
+このとき，自動収集された情報が間違っていることがある．<br />
+松野研だと，Hatori 2014の論文にエラーが生じる．<br />
+そこらへんは，自分でチェックしておこう．<br />
+あと，メニューから，<code>Preference</code> → <code>Document Details</code>を選び，<code>Document Type</code>の<code>Journal Article</code>の<code>Citation Key</code>にチェックをいれておこう．<br />
+最後に，論文を全選択して，右クリック→<code>Export</code>をクリックし，BibTex(<code>bib</code>)フォーマットで好きな場所に保存する．</p>
+<p>これで，引用に必要な<code>.bib</code>ファイルは手に入った．</p>
+<!-- }}} -->
+<h2 id="cslファイルの準備"><code>.csl</code>ファイルの準備 <!-- {{{ --></h2>
+<p>CSLファイルは，論文ごとの引用様式が書かれたファイルである．<br />
+たとえば，NatureとCellの論文の引用の仕方が違うが，これは，CSLファイルで自動生成可能である．<br />
+<code>.bib</code>ファイルを使って引用の自動生成を行うためには，CSLも必要である．<br />
+幸いなことに，CSLは，ダウンロード可能である．</p>
+<p><a href="https://csl.mendeley.com/about/">MendeleyのCSL編集サイト</a>に行き，好きなCSLを探す．<br />
+検索窓に，NatureやCellなど，投稿したい雑誌名を入れてもいいし，投稿したい雑誌に規定があれば，規定に合うCSLをさがす(たとえばAPAなど)．<br />
+ほしいCSLがみつかったら，<code>View style</code>をクリックする．<br />
+移動したページの末尾に，<code>CSL code</code>というテキストがあるので，それを全コピーして，好きな場所に<code>apa.csl</code>など適当な名前で保存する．</p>
+<p>これで<code>.csl</code>ファイルも手に入った．<br />
+これだけあれば，引用の自動生成ができてしまう!!!</p>
+<!-- }}} -->
+<h2 id="リファレンスdocxの作成">リファレンス<code>docx</code>の作成 <!-- {{{ --></h2>
+<p>引用の自動生成が出来るとなると，もうかなり良いのだが，ボスに渡すにあたって，少しだけ見た目をキレイにしておこう．<br />
+pandocでは，生成されるWordファイルの見た目を，だいたい決めておくことができる．<br />
+見た目をまたコードで命令すると面倒なのだが，素晴らしいことに，pandocはWordファイルのまま，見た目を決められる．<br />
+今回は，自分が常用しているスタイルをまとめた<code>reference.docx</code>を使った．<br />
+詳しくは，<a href="http://sky-y.github.io/site-pandoc-jp/users-guide/">Pandoc User's Guide</a>の<code>--reference-docx</code>の項を読もう．</p>
+<p>ここまで，ざっくりとMarkdownを使って論文を書き，人に渡す状態に持っていく方法論をしょ迂回してきた．<br />
+基本的には習うより慣れろなので，自分で使いこなすのが一番だとおもう．<br />
+慣れてくると，<a href="https://www.clear-code.com/blog/2018/9/13.html">ここ</a>にかかれているような方法で，<a href="https://github.com/jgm/pandoc/wiki/User-contributed-templates">template</a>をダウンロードして使ったりもできる．</p>
+<!-- }}} -->
+<h2 id="それ以外のtips">それ以外のtips <!-- {{{ --></h2>
+<ul>
+<li>Markdownは，HTML記法も使えるので，コメントの挿入ができる．
+<ul>
+<li><code>&lt;!-- コメント．読み込まれない． --&gt;</code>という文法で書いたコメントは，<code>.md</code>上では読めるが，WordやPDFには変換されない．</li>
+<li>自分のためのメモなどに便利</li>
+<li>たとえば，<code>&lt;!-- ここにxxの論文を引用しつつ書き足す --&gt;</code>とかのコメントを入れる．</li>
+</ul></li>
+<li>IntroductionやResultをファイルを分割して書いた方が管理がしやすい．
+<ul>
+<li>もちろんまとめて書いても問題はない</li>
+<li>Gitを使って管理するなら，分割されてるほうが良い</li>
+<li>雑誌によっては，マテメソの位置が変わるので，分割しているほうが，順番の入れ替えが簡単</li>
+</ul></li>
+<li>図は別フォルダに別途用意するほうがよい
+<ul>
+<li>Wordだと，ファイルに図が埋め込まれるので，容量が大きくなってしまう</li>
+<li>Markdown上では図は参照する形でしか書かないので，容量は小さいママ</li>
+<li>本文だけ書き換えても，参照する図は同じなので，容量も小さく，見た目も揃う</li>
+<li>図の変更や順番の入れかえも簡単になる</li>
+</ul></li>
+<li>vimだと，<a href="https://github.com/rafaqz/citation.vim">citation.vim</a>を使えば，citation keyの挿入が簡単になる</li>
+</ul>
+<!-- }}} -->
+<!-- vim: set foldmethod=marker : -->
+</body>
+</html>
